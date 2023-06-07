@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float facing = 0;
     Vector2 movement;
     public ProjectileBehavior smallCardUp;
-    public Transform upProjectileOffset;
+    public Transform upProjectileOffsetL, upProjectileOffsetR;
+    public Transform downProjectileOffsetL, downProjectileOffsetR;
 
     void Update()
     {
@@ -54,9 +55,14 @@ public class PlayerMovement : MonoBehaviour
             Projectile Code
         */
 
-        if(Input.GetButtonDown("Fire1")){
-            if(facing == 0.2f){
-                Instantiate(smallCardUp,upProjectileOffset);
+        if(Input.GetButtonDown("FireL")){ // LEFT HAND FIRE
+            if(facing == 0.2f){ // FACING UP
+                Instantiate(smallCardUp,upProjectileOffsetL);
+            }
+        }
+        if(Input.GetButtonDown("FireR")){ // RIGHT HAND FIRE
+            if(facing == 0.2f){ // FACING UP
+                Instantiate(smallCardUp,upProjectileOffsetR);
             }
         }
 

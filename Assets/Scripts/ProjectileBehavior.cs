@@ -10,7 +10,7 @@ public class ProjectileBehavior : MonoBehaviour
     public float existTime = 2;
     public float existDistance = 10;
     private float creationTime; 
-    public GameObject player;
+    public float damage = 1;
 
     void Awake(){
         creationTime = Time.time;
@@ -23,7 +23,7 @@ public class ProjectileBehavior : MonoBehaviour
             Debug.Log("DESTROY via TIME");
             Destroy(gameObject);
         }
-        if(Vector3.Distance(transform.position, player.transform.position) >= existDistance){
+        if(Vector3.Distance(transform.position, transform.parent.position) >= existDistance){
             Debug.Log("DESTROY via DISTANCE");
             Destroy(gameObject);
         }
@@ -33,6 +33,8 @@ public class ProjectileBehavior : MonoBehaviour
     } 
 
     void OnCollisionEnter2D(Collision2D col){
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Enemy" ) {
+            Destroy(gameObject);
+        }
     }
 }
