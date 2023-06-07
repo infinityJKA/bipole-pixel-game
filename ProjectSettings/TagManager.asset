@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy Projectile
   - Player Projectile
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Objects
+    uniqueID: 3625231409
+    locked: 0
+  - name: Low Environment
+    uniqueID: 445453523
+    locked: 0
+  - name: Lower Player Projectiles
+    uniqueID: 1716412229
+    locked: 0
+  - name: Player
+    uniqueID: 514091095
+    locked: 0
+  - name: Enemies
+    uniqueID: 2227322345
+    locked: 0
+  - name: Player Projectiles
+    uniqueID: 652119333
+    locked: 0
+  - name: Enemy Projectiles
+    uniqueID: 3960188173
+    locked: 0
+  - name: High Environment
+    uniqueID: 71244357
     locked: 0

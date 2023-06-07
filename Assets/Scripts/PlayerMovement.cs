@@ -11,9 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public float facing = 0;
     Vector2 movement;
-    public ProjectileBehavior smallCardUp;
+    public ProjectileBehavior smallCardUp, smallCardDown, smallCardLeft, smallCardRight;
     public Transform upProjectileOffsetL, upProjectileOffsetR;
     public Transform downProjectileOffsetL, downProjectileOffsetR;
+    public Transform leftProjectileOffsetL, leftProjectileOffsetR;
+    public Transform rightProjectileOffsetL, rightProjectileOffsetR;
 
     void Update()
     {
@@ -58,11 +60,23 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("FireL")){ // LEFT HAND FIRE
             if(facing == 0.2f){ // FACING UP
                 Instantiate(smallCardUp,upProjectileOffsetL);
+            }else if(facing == 0f){ // FACING DOWN
+                Instantiate(smallCardDown,downProjectileOffsetL);
+            }else if(facing == 0.1f){ // FACING LEFT
+                Instantiate(smallCardLeft,leftProjectileOffsetL);
+            }else{ // FACING RIGHT
+                Instantiate(smallCardRight,rightProjectileOffsetL);
             }
         }
         if(Input.GetButtonDown("FireR")){ // RIGHT HAND FIRE
             if(facing == 0.2f){ // FACING UP
                 Instantiate(smallCardUp,upProjectileOffsetR);
+            }else if(facing == 0f){ // FACING DOWN
+                Instantiate(smallCardDown,downProjectileOffsetR);
+            }else if(facing == 0.1f){ // FACING LEFT
+                Instantiate(smallCardLeft,leftProjectileOffsetR);
+            }else{ // FACING RIGHT
+                Instantiate(smallCardRight,rightProjectileOffsetR);
             }
         }
 

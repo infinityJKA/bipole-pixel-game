@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7649103328897814867}
   - component: {fileID: 7649103328897814869}
   m_Layer: 0
-  m_Name: Card_Up
+  m_Name: Card_Right
   m_TagString: Player Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1716412229
+  m_SortingLayerID: 652119333
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea69730ddb9dea641a7c73ba6dedf039, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6651c97aeae3cf940aff5ea961253411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04923694, y: 0.058733523}
+  m_Offset: {x: -0.049360424, y: 0.048211887}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35894284, y: 0.55339414}
+  m_Size: {x: 0.5141811, y: 0.3177105}
   m_EdgeRadius: 0
 --- !u!50 &7649103328897814867
 Rigidbody2D:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2801347f82523c41be136c796a62cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: {x: 0, y: 1}
+  dir: {x: 1, y: 0}
   speed: 10
   rb: {fileID: 7649103328897814867}
   existTime: 1
