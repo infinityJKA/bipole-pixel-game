@@ -67,17 +67,17 @@ public class PlayerMovement : MonoBehaviour
             }else{ // FACING RIGHT
                 Instantiate(smallCardRight,rightProjectileOffsetL);
             }
-        }
-        if(Input.GetButtonDown("FireR")){ // RIGHT HAND FIRE
-            if(facing == 0.2f){ // FACING UP
-                Instantiate(smallCardUp,upProjectileOffsetR);
-            }else if(facing == 0f){ // FACING DOWN
-                Instantiate(smallCardDown,downProjectileOffsetR);
-            }else if(facing == 0.1f){ // FACING LEFT
-                Instantiate(smallCardLeft,leftProjectileOffsetR);
-            }else{ // FACING RIGHT
-                Instantiate(smallCardRight,rightProjectileOffsetR);
-            }
+        // }
+        // if(Input.GetButtonDown("FireR")){ // RIGHT HAND FIRE
+        //     if(facing == 0.2f){ // FACING UP
+        //         Instantiate(smallCardUp,upProjectileOffsetR);
+        //     }else if(facing == 0f){ // FACING DOWN
+        //         Instantiate(smallCardDown,downProjectileOffsetR);
+        //     }else if(facing == 0.1f){ // FACING LEFT
+        //         Instantiate(smallCardLeft,leftProjectileOffsetR);
+        //     }else{ // FACING RIGHT
+        //         Instantiate(smallCardRight,rightProjectileOffsetR);
+        //     }
         }
 
 
