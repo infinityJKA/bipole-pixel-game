@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
+    public float meleeKnockback;
+    public int meleeDamage;
     public Rigidbody2D rb;
     public Animator animator;
     public float facing = 0;

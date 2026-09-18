@@ -11,6 +11,7 @@ public class ProjectileBehavior : MonoBehaviour
     public float existDistance = 10;
     private float creationTime; 
     public float damage = 1;
+    public Vector2 knockback;
 
     void Awake(){
         creationTime = Time.time;
@@ -32,9 +33,9 @@ public class ProjectileBehavior : MonoBehaviour
         rb.MovePosition(rb.position+dir.normalized*speed*Time.fixedDeltaTime);
     } 
 
-    void OnCollisionEnter2D(Collision2D col){
-        if (col.gameObject.tag == "Enemy" ) {
-            Destroy(gameObject);
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D col){
+    //     if (col.gameObject.tag == "Enemy" ) {
+    //         Destroy(gameObject);
+    //     }
+    // }
 }
