@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 using System;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
+    public int currentHP, maxHP;
     public float meleeKnockback;
     public int meleeDamage;
     public Rigidbody2D rb;
@@ -19,8 +21,37 @@ public class PlayerMovement : MonoBehaviour
     public Transform leftProjectileOffsetL, leftProjectileOffsetR;
     public Transform rightProjectileOffsetL, rightProjectileOffsetR;
 
+
+    public SpriteRenderer spriteRenderer;
+    public float tookDamage;
+    public bool stunned;
+
+    void Start()
+    {
+        currentHP = maxHP;
+        stunned = false;
+    }
+
+
+
     void Update()
     {
+
+        if (stunned)
+        {
+            if(Time.time - tookDamage > 0.5f)
+            {
+                Color currentColor = spriteRenderer.color;
+                spriteRenderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
+                stunned = false;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+
         /*
             Movement Code
         */
@@ -93,6 +124,57 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(stunned) return;
+
          rb.MovePosition(rb.position+movement.normalized*moveSpeed*Time.fixedDeltaTime);
     }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyHitbox"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<EnemyHitbox>().damage,collision.gameObject.GetComponent<EnemyHitbox>().knockback);    
+        }     
+    }
+
+    void TakeDamage(int d, float k)
+    {
+        currentHP -= d;
+        if(currentHP <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            Vector2 knockback;
+
+            if(facing == 0f) //DOWN
+            {
+                knockback = new Vector2(0, k);
+            }
+            else if(facing == 0.1f) //LEFT
+            {
+                knockback = new Vector2(k, 0);
+            }
+            else if(facing == 0.2f) //UP
+            {
+                knockback = new Vector2(0, -k);
+            }
+            else //RIGHT
+            {
+                knockback = new Vector2(-k, 0);
+            }
+
+            rb.velocity = Vector3.zero;
+
+            tookDamage = Time.time;
+            Color currentColor = spriteRenderer.color;
+            spriteRenderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.5f);
+            stunned = true;
+
+            rb.AddForce(knockback, ForceMode2D.Impulse);
+        }
+    }
+
 }
