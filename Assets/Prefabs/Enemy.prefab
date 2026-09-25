@@ -103,9 +103,14 @@ MonoBehaviour:
   hurtBox: {fileID: 5189545175123953123}
   rb: {fileID: 6894405080755828436}
   spriteRenderer: {fileID: 2642315447558025581}
-  maxHP: 15
+  maxHP: 10
   currentHP: 0
   player: {fileID: 0}
+  moveSpeed: 3.5
+  minMoveTime: 0.5
+  maxMoveTime: 2
+  minWaitTime: 0.5
+  maxWaitTime: 1.5
 --- !u!61 &5189545175123953123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +194,7 @@ GameObject:
   - component: {fileID: 3092763908749932939}
   - component: {fileID: 2150657297862238051}
   - component: {fileID: 4714997501960678821}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyHitbox
   m_TagString: EnemyHitbox
   m_Icon: {fileID: 0}
