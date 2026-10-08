@@ -59,23 +59,31 @@ public class Enemy : MonoBehaviour
         {
             ProjectileBehavior projectile = collision.gameObject.GetComponent<ProjectileBehavior>();
 
+            
+            AudioManager.Instance.PlaySfx("PlayerHitProjectile");
+
             if (invulnerable)
             {
                 Destroy(projectile.gameObject);
                 return;
             }
 
+
             TakeDamage((int)projectile.damage, projectile.knockback);
             Destroy(projectile.gameObject);
         }
         else if (collision.gameObject.CompareTag("PlayerMelee"))
         {
+            
+            AudioManager.Instance.PlaySfx("EnemyHit");
+            
             if(invulnerable)
             {
                 return;
             }
 
             Vector2 knockback;
+
 
             if(player.facing == 0f) //DOWN
             {

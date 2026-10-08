@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,16 +28,29 @@ public class PlayerMovement : MonoBehaviour
     public float tookDamage;
     public bool stunned;
 
+    public TMP_Text hpText;
+
     void Start()
     {
         currentHP = maxHP;
         stunned = false;
+
+        AudioManager.Instance.PlayMusic("LevelTheme");
+    }
+
+    void OnDisable()
+    {
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopMusic();
+        }
     }
 
 
 
     void Update()
     {
+        hpText.text = "HP: "+currentHP.ToString();
 
         if (stunned)
         {
@@ -140,6 +155,8 @@ public class PlayerMovement : MonoBehaviour
 
     void TakeDamage(int d, float k)
     {
+        AudioManager.Instance.PlaySfx("PlayerHit");
+
         currentHP -= d;
         if(currentHP <= 0)
         {
